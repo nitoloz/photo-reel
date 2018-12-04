@@ -1,23 +1,19 @@
 function d3Reel() {
     function chart(selection) {
         selection.each(function (dataset) {
-            let divBounds = selection[0][0].getBoundingClientRect();
+            const divBounds = selection[0][0].getBoundingClientRect();
 
-            let xScale = d3.scale.ordinal()
-                .domain((d3.range(dataset.length)))
-                .rangeRoundBands([0, divBounds.width]);
-
-            let disortionScale = d3.scale.linear()
+            const disortionScale = d3.scale.linear()
                 .domain([0, 100])
                 .range([5, 20]);
 
-            let x = d3.fisheye.ordinal()
+            const x = d3.fisheye.ordinal()
                 .domain(d3.range(dataset.length))
                 .rangeRoundBands([0, divBounds.width])
-                .focus(1)
+                .focus(divBounds.width / 2)
                 .distortion(disortionScale(dataset.length));
 
-            let svg = selection.append("svg")
+            const svg = selection.append("svg")
                 .attr('id','#reel-svg')
                 .attr("width", divBounds.width)
                 .attr("height", divBounds.height)
@@ -25,39 +21,37 @@ function d3Reel() {
                 .style('-webkit-box-reflect', 'below 0px -webkit-linear-gradient(bottom, ' +
                     'rgba(255, 255, 255, 0.3) 0%, transparent 40%, transparent 100%)');
 
-            let groups = svg
+            const groups = svg
                 .append("g")
                 .selectAll('image')
                 .data(dataset);
 
-            let groupsEnter = groups
+            const groupsEnter = groups
                 .enter()
                 .append('image');
 
             groups.exit().remove();
 
-            let imageEnter = groupsEnter
+            const imageEnter = groupsEnter
                 .attr("xlink:href", function (d, i) {
                     return d.imageUrl;
                 })
-                .attr("x", function (d, i) {
-                    return xScale(i.toString());
-                })
                 .attr("y", 0)
+                .attr("x", function (d, i) {
+                    return x(i);
+                })
                 .attr("width", function (d, i) {
-                    return Math.min(xScale.rangeBand(), divBounds.height);
+                    return Math.min(x.rangeBand(i), divBounds.height);
                 })
                 .attr("height", function (d, i) {
-                    return Math.min(xScale.rangeBand(), divBounds.height);
+                    return Math.min(x.rangeBand(i), divBounds.height);
                 })
-                .style('transition', 'all 0.3s');
+                .style('transition', 'all 0.1s');
 
             groupsEnter
                 .on("mousemove", function () {
                     onMouseEnter(d3.mouse(this)[0]);
                 });
-
-            onMouseEnter(divBounds.width / 2);
 
             function onMouseEnter(xCoordinate) {
                 x.focus(xCoordinate);
