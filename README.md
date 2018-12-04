@@ -1,4 +1,4 @@
-# Images reel
+# Photo reel
 
 Module based on [d3.js fisheye plugin](https://github.com/d3/d3-plugins/tree/master/fisheye) to vizualize images.
 
