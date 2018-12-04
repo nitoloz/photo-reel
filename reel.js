@@ -5,7 +5,7 @@ function d3Reel() {
 
             const disortionScale = d3.scale.linear()
                 .domain([0, 100])
-                .range([5, 20]);
+                .range([1, dataset.length + 3]);
 
             const x = d3.fisheye.ordinal()
                 .domain(d3.range(dataset.length))
@@ -14,7 +14,7 @@ function d3Reel() {
                 .distortion(disortionScale(dataset.length));
 
             const svg = selection.append("svg")
-                .attr('id','#reel-svg')
+                .attr('id', '#reel-svg')
                 .attr("width", divBounds.width)
                 .attr("height", divBounds.height)
                 .style('cursor', 'pointer')
@@ -45,8 +45,7 @@ function d3Reel() {
                 })
                 .attr("height", function (d, i) {
                     return Math.min(x.rangeBand(i), divBounds.height);
-                })
-                .style('transition', 'all 0.1s');
+                });
 
             groupsEnter
                 .on("mousemove", function () {
@@ -68,34 +67,34 @@ function d3Reel() {
             }
         });
     }
+
     return chart;
 }
 
 let images = [
-    {imageUrl: 'http://top10reiting.com/wp-content/uploads/2017/06/spas-na-krovi.jpg'},
-    {imageUrl: 'http://nvdaily.ru/wp-content/uploads/2016/09/sankt-peterburg.jpg'},
-    {imageUrl: 'http://www.rukivnogi.com/images/arts/74.jpg'},
-    {imageUrl: 'https://dan-news.info/wp-content/uploads/2017/06/%D0%BF%D0%B0%D1%80%D1%83%D1%81%D0%B0-2.jpg'},
-    {imageUrl: 'http://piter-otel.ru/photos/notes/12224.jpg'},
-    {imageUrl: 'https://thumbs.dreamstime.com/b/peterhof-rusland-het-paleis-van-de-koning-en-fontein-grote-cascade-omgeving-van-st-petersburg-73465057.jpg'},
-    {imageUrl: 'http://selfhacker.ru/wp-content/uploads/images/6918_0_f96b7abbd011e9ebfa4b19da40e3d210.jpg'},
-    {imageUrl: 'http://piter.co/uploads/images/00/00/01/2013/10/12/54c90d1e92.jpg'},
-    {imageUrl: 'http://top10reiting.com/wp-content/uploads/2017/06/spas-na-krovi.jpg'},
-    {imageUrl: 'http://nvdaily.ru/wp-content/uploads/2016/09/sankt-peterburg.jpg'},
-    {imageUrl: 'http://www.rukivnogi.com/images/arts/74.jpg'},
-    {imageUrl: 'https://dan-news.info/wp-content/uploads/2017/06/%D0%BF%D0%B0%D1%80%D1%83%D1%81%D0%B0-2.jpg'},
-    {imageUrl: 'http://piter-otel.ru/photos/notes/12224.jpg'},
-    {imageUrl: 'https://thumbs.dreamstime.com/b/peterhof-rusland-het-paleis-van-de-koning-en-fontein-grote-cascade-omgeving-van-st-petersburg-73465057.jpg'},
-    {imageUrl: 'http://selfhacker.ru/wp-content/uploads/images/6918_0_f96b7abbd011e9ebfa4b19da40e3d210.jpg'},
-    {imageUrl: 'http://piter.co/uploads/images/00/00/01/2013/10/12/54c90d1e92.jpg'},
-    {imageUrl: 'http://top10reiting.com/wp-content/uploads/2017/06/spas-na-krovi.jpg'},
-    {imageUrl: 'http://nvdaily.ru/wp-content/uploads/2016/09/sankt-peterburg.jpg'},
-    {imageUrl: 'http://www.rukivnogi.com/images/arts/74.jpg'},
-    {imageUrl: 'https://dan-news.info/wp-content/uploads/2017/06/%D0%BF%D0%B0%D1%80%D1%83%D1%81%D0%B0-2.jpg'},
-    {imageUrl: 'http://piter-otel.ru/photos/notes/12224.jpg'},
-    {imageUrl: 'https://thumbs.dreamstime.com/b/peterhof-rusland-het-paleis-van-de-koning-en-fontein-grote-cascade-omgeving-van-st-petersburg-73465057.jpg'},
-    {imageUrl: 'http://selfhacker.ru/wp-content/uploads/images/6918_0_f96b7abbd011e9ebfa4b19da40e3d210.jpg'},
-    {imageUrl: 'http://piter.co/uploads/images/00/00/01/2013/10/12/54c90d1e92.jpg'}
+    {imageUrl: 'images/kazan-cathedral.jpg'},
+    {imageUrl: 'images/church.jpg'},
+    {imageUrl: 'images/neva.jpg'},
+    {imageUrl: 'images/peterhof.jpg'},
+    {imageUrl: 'images/peterhof-1.jpg'},
+    {imageUrl: 'images/saint-isaacs-cathedral.jpg'},
+    {imageUrl: 'images/st-peter-and-paul.jpg'},
+    {imageUrl: 'images/trinity-cathedral.jpg'},
+    {imageUrl: 'images/kazan-cathedral.jpg'},
+    {imageUrl: 'images/church.jpg'},
+    {imageUrl: 'images/neva.jpg'},
+    {imageUrl: 'images/peterhof.jpg'},
+    {imageUrl: 'images/peterhof-1.jpg'},
+    {imageUrl: 'images/saint-isaacs-cathedral.jpg'},
+    {imageUrl: 'images/st-peter-and-paul.jpg'},
+    {imageUrl: 'images/trinity-cathedral.jpg'},
+    {imageUrl: 'images/kazan-cathedral.jpg'},
+    {imageUrl: 'images/church.jpg'},
+    {imageUrl: 'images/neva.jpg'},
+    {imageUrl: 'images/peterhof.jpg'},
+    {imageUrl: 'images/peterhof-1.jpg'},
+    {imageUrl: 'images/saint-isaacs-cathedral.jpg'},
+    {imageUrl: 'images/st-peter-and-paul.jpg'}
 ];
 
 let chart = d3Reel();
