@@ -1,4 +1,4 @@
-function d3Reel() {
+function d3PhotoReel() {
 
     let width = null,
         height = null,
@@ -98,34 +98,3 @@ function d3Reel() {
     return chart;
 }
 
-let images = [
-    {imageUrl: 'images/kazan-cathedral.jpg'},
-    {imageUrl: 'images/church.jpg'},
-    {imageUrl: 'images/neva.jpg'},
-    {imageUrl: 'images/peterhof.jpg'},
-    {imageUrl: 'images/peterhof-1.jpg'},
-    {imageUrl: 'images/saint-isaacs-cathedral.jpg'},
-    {imageUrl: 'images/st-peter-and-paul.jpg'},
-    {imageUrl: 'images/trinity-cathedral.jpg'},
-    {imageUrl: 'images/kazan-cathedral.jpg'},
-    {imageUrl: 'images/church.jpg'},
-    {imageUrl: 'images/neva.jpg'},
-    {imageUrl: 'images/peterhof.jpg'},
-    {imageUrl: 'images/peterhof-1.jpg'},
-    {imageUrl: 'images/saint-isaacs-cathedral.jpg'},
-    {imageUrl: 'images/st-peter-and-paul.jpg'},
-    {imageUrl: 'images/trinity-cathedral.jpg'},
-    {imageUrl: 'images/kazan-cathedral.jpg'},
-    {imageUrl: 'images/church.jpg'},
-    {imageUrl: 'images/neva.jpg'},
-    {imageUrl: 'images/peterhof.jpg'},
-    {imageUrl: 'images/peterhof-1.jpg'},
-    {imageUrl: 'images/saint-isaacs-cathedral.jpg'},
-    {imageUrl: 'images/st-peter-and-paul.jpg'}
-];
-
-let chart = d3Reel();
-
-d3.select("#reel-div")
-    .datum(images)
-    .call(chart);
