@@ -4,4 +4,5 @@ Module based on [d3.js fisheye plugin](https://github.com/d3/d3-plugins/tree/mas
 
 ## Demo
 [Demo available here](https://nitoloz.github.io/photo-reel/).
+![screenshot](examples/images/photo-reel-example.jpg)
 
